@@ -1,0 +1,78 @@
+spring:
+  application:
+    name: spring-data
+
+  datasource:
+    password: postgres
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+        format_sql: true
+    show-sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: waa.final.testing@gmail.com
+    password: geruxugllnrhwboi
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  activemq:
+    broker-url: tcp://localhost:61616
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+  servlet:
+    context-path: /api
+
+keycloak:
+  realm: waa-property
+  auth-server-url: http://localhost:8081
+  resource: master
+  public-client: true
+  bearer-only: true
+
+queues:
+  email-queue: email-queue
+logging:
+  level:
+    uz:
+      spiders:
+        propertymanagement: debug
+
+aws:
+  zone: us-east-1
+  s3:
+    access_key: ${AWS_S3_ACCESS_KEY}
+    secret_key: ${AWS_S3_SECRET_KEY}
